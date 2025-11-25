@@ -5,7 +5,7 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <div className="w-full h-[calc(100vh-12vh)] flex flex-col justify-center items-center">
-      <div className="w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="w-4/5 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-rose-400">
         {/* content */}
         <div className="">
           <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-black font-bold uppercase">
@@ -27,7 +27,7 @@ const Hero = () => {
         </div>
         {/* Image content */}
         <div className="hidden lg:block">
-            <Image src="/hero.jpg" alt="pic" width={600} height={600} className="lg:w-[70%] lg:w-[70%] xl:w-[80%] xl:h-[80%]"/>
+            <Image src="/hero.jpg" alt="pic" width={600} height={600} className="lg:w-[70%] lg:w-[70%] xl:w-[80%]"/>
         </div>
       </div>
     </div>
