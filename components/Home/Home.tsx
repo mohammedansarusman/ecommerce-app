@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from './Hero'
 import Category from './Category'
 import AllProducts from './AllProducts'
+import Footer from './Footer'
 
 const Home = () => {
   return (
@@ -9,7 +10,6 @@ const Home = () => {
       <Hero />
       <Category />
       <AllProducts />
-
     </div>
   )
 }

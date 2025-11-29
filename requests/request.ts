@@ -12,3 +12,9 @@ export const fetchProducts = async() =>{
     const data = await response.json();
     return data;
 }
+export const singleProduct = async(id:string) =>{
+    const response = await fetch(`${PRODUCTS_URL}/${id}`)
+    const data = await response.json();
+    return data;
+}
+

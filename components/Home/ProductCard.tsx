@@ -3,6 +3,7 @@ import { Product } from "@/typing";
 import Image from "next/image";
 import { Heart, ShoppingBag, Star, StarIcon } from "lucide-react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 type Props = {
   product: Product;
@@ -29,20 +30,34 @@ const ProductCard = ({ product }: Props) => {
         {product.category}
       </p>
       {/* Product Title */}
-      <div className="flex justify-center items-center w-[200px] h-5 ">
-        <h1 className="font-semibold truncate leading-none hover:underline
-       hover:text-blue-900 transition-all duration-1000 cursor-pointer text-sm lg:text-md">
-        {product.title}
-      </h1>
-      </div>
+      <Link href={`/product/product-details/${product.id}`}>
+        <div className="flex justify-center items-center w-[200px] h-5 ">
+          <h1
+            className="font-semibold truncate leading-none hover:underline
+       hover:text-blue-900 transition-all duration-1000 cursor-pointer text-sm lg:text-md"
+          >
+            {product.title}
+          </h1>
+        </div>
+      </Link>
+
       {/* Rating  */}
       <div className="flex items-center">
-        {ratingArray.map((star,index)=><Star size={15} fill="orange" color="white" key={Math.random()*1000}/>)}
+        {ratingArray.map((star, index) => (
+          <Star
+            size={15}
+            fill="orange"
+            color="white"
+            key={Math.random() * 1000}
+          />
+        ))}
       </div>
       {/* Price */}
       <div className="px-5 flex items-center w-[150px] space-x-2">
-        <p className="line-through opacity-50">{`$${(product.price+10).toFixed(2)}`}</p>
-        <p>{`$${(product.price).toFixed(2)}`}</p>
+        <p className="line-through opacity-50">{`$${(
+          product.price + 10
+        ).toFixed(2)}`}</p>
+        <p>{`$${product.price.toFixed(2)}`}</p>
       </div>
       {/* Button */}
       <div className="w-[200px] flex justify-evenly">
@@ -50,11 +65,9 @@ const ProductCard = ({ product }: Props) => {
           <ShoppingBag />
         </Button>
         <Button size={"icon"} className="bg-red-500 text-white">
-          <Heart color="white"/>  
+          <Heart color="white" />
         </Button>
       </div>
-      
-
     </div>
   );
 };
