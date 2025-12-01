@@ -7,7 +7,6 @@ const ProductId = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
   const product = await singleProduct(id);
   const { title, price, description, image, rating, category } = product;
-  console.log("data=>", product);
   const num = Math.round(rating.rate);
   const ratingArray = new Array(num).fill(0);
 
@@ -31,7 +30,7 @@ const ProductId = async ({ params }: { params: { id: string } }) => {
         {/* rating */}
         <div className="flex items-center gap-1">
           <div className="flex">
-            {ratingArray.map((star, index) => (
+            {ratingArray.map((star) => (
               <Star
                 size={15}
                 fill="orange"

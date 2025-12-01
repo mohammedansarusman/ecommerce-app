@@ -1,4 +1,3 @@
-'use client'
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,10 +5,8 @@ import SearchBox from "../Helper/SearchBox";
 import { HeartIcon, UserIcon } from "lucide-react";
 import ShoppingCartButton from "../Helper/ShoppingCartButton";
 import { SignedIn, SignedOut, UserAvatar, UserButton } from "@clerk/nextjs";
-import { useSelector, UseSelector } from "react-redux";
 
 const Nav = () => {
-  const item =  useSelector(store=>store.cart.item)
   return (
     <div className="h-[12vh] sticky top-0 z-1 bg-white shadow-md">
       <div className="w-[95%] flex justify-between items-center mx-auto h-full md:w-4/5">
@@ -23,7 +20,6 @@ const Nav = () => {
           <HeartIcon className="cursor-pointer" />
           {/* Shopping Cart Button */}
           <ShoppingCartButton />
-          {/* <p>{item}</p> */}
 
           {/* if signed in  */}
           <SignedIn>

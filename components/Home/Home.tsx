@@ -6,11 +6,12 @@ import Footer from './Footer'
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Hero />
       <Category />
       <AllProducts />
-    </div>
+    </>
+    
   )
 }
 

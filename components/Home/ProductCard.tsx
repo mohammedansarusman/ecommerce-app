@@ -1,16 +1,44 @@
+'use client'
 import React from "react";
 import { Product } from "@/typing";
 import Image from "next/image";
 import { Heart, ShoppingBag, Star, StarIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { setCart } from "@/store/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+
+
+
 
 type Props = {
   product: Product;
 };
 const ProductCard = ({ product }: Props) => {
+
+  const dispatch = useDispatch();
+  const existingItem = useSelector((store) => store.cart.item);
+
   const num = Math.round(product.rating.rate);
   const ratingArray = new Array(num).fill(0);
+  
+  const handleAddCart = () =>{
+    console.log("clicked ");
+
+    const foundItem = existingItem.find((record) => record.id === product.id)
+    if (foundItem) {
+      const updatedCart = existingItem.map((record)=>{
+        if(record.id===product.id){
+          return {...record,quantity:record.quantity+1}
+        }else{
+          return {...record}
+        }
+      })
+      dispatch(setCart(updatedCart))
+    } else {
+      dispatch(setCart([...existingItem, { ...product, quantity: 1 }]))
+    }
+  }
 
   return (
     <div className="p-4 flex flex-col items-center w-[200px]">
@@ -61,7 +89,7 @@ const ProductCard = ({ product }: Props) => {
       </div>
       {/* Button */}
       <div className="w-[200px] flex justify-evenly">
-        <Button size={"icon"}>
+        <Button size={"icon"} onClick={handleAddCart}>
           <ShoppingBag />
         </Button>
         <Button size={"icon"} className="bg-red-500 text-white">
