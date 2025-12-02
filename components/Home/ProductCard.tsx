@@ -1,8 +1,7 @@
 'use client'
-import React from "react";
 import { Product } from "@/typing";
 import Image from "next/image";
-import { Heart, ShoppingBag, Star, StarIcon } from "lucide-react";
+import { Heart, ShoppingBag, Star} from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { setCart } from "@/store/cartSlice";
@@ -23,7 +22,6 @@ const ProductCard = ({ product }: Props) => {
   const ratingArray = new Array(num).fill(0);
   
   const handleAddCart = () =>{
-    console.log("clicked ");
 
     const foundItem = existingItem.find((record) => record.id === product.id)
     if (foundItem) {
