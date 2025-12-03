@@ -2,16 +2,18 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { SheetClose } from "../ui/sheet";
-import { removeItem } from "@/store/cartSlice";
+import { removeItem, addItem } from "@/store/cartSlice";
 import { useDispatch } from "react-redux";
 
 const CartSideBar = ({ cartItems }) => {
-    const dispatch = useDispatch();
-    // const existingItem = useSelector((store) => store.cart.item);
-
+  const dispatch = useDispatch();
+  // remove item from cart
   const handleRemove = (id: number) => {
-    console.log("id=>", id);
     dispatch(removeItem(id));
+  };
+  // plus quanity in cart
+  const handleAdd = (id: number) => {
+    dispatch(addItem(id));
   };
 
   return (
@@ -63,10 +65,14 @@ const CartSideBar = ({ cartItems }) => {
                 </h1>
                 {/* add or remove button */}
                 <div className="flex items-center space-x-4">
-                  <Button size={"sm"} variant={"destructive"} onClick={() => handleRemove(item?.id)}>
+                  <Button
+                    size={"sm"}
+                    variant={"destructive"}
+                    onClick={() => handleRemove(item?.id)}
+                  >
                     Remove
                   </Button>
-                  <Button size={"sm"} >
+                  <Button size={"sm"} onClick={() => handleAdd(item?.id)}>
                     Add
                   </Button>
                 </div>
