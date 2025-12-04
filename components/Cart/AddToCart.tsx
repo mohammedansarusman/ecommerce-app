@@ -4,6 +4,7 @@
 import { setCart } from "@/store/cartSlice";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
 
 
 const AddToCart = ({ product }) => {
@@ -24,7 +25,15 @@ const AddToCart = ({ product }) => {
     } else {
       dispatch(setCart([...existingItem, { ...product, quantity: 1 }]))
     }
-
+    toast.success(
+      "Items added to the car",{
+          style:{
+            background:"green",
+            color:"white"
+          },
+          duration:1000,
+        }
+    )
   };
   return (
     <Button className="mt-6 w-[120px] h-[30px]" onClick={handleClick}>

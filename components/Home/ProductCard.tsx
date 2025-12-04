@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { setCart } from "@/store/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
 
 
 
@@ -14,7 +15,6 @@ type Props = {
   product: Product;
 };
 const ProductCard = ({ product }: Props) => {
-
   const dispatch = useDispatch();
   const existingItem = useSelector((store) => store.cart.item);
 
@@ -36,6 +36,15 @@ const ProductCard = ({ product }: Props) => {
     } else {
       dispatch(setCart([...existingItem, { ...product, quantity: 1 }]))
     }
+    toast.success(
+      "Items added to the car",{
+          style:{
+            background:"green",
+            color:"white"
+          },
+          duration:1000,
+        }
+    )
   }
 
   return (
