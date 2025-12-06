@@ -57,7 +57,7 @@ const CartSideBar = ({ cartItems }) => {
                 </h1>
                 {/* price x quantity =  */}
                 <h1 className="text-base text-blue-950 font-bold">{`$${
-                  item?.price?.toFixed(2) * item?.quantity
+                  item?.price?.toFixed(2)
                 }`}</h1>
                 {/* quantity */}
                 <h1 className="font-bold text-base mb-2">
