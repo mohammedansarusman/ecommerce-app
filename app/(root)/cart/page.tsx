@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import Summary from "@/components/Cart/Summary";
 import EmptyCart from "@/components/Cart/EmptyCart";
 import { addItem, removeItem } from "@/store/cartSlice";
+import type { RootState } from "@/store/appStore";
+
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -17,7 +19,7 @@ const CartPage = () => {
     dispatch(addItem(id));
   };
 
-  const items = useSelector((store) => store.cart.item);
+  const items = useSelector((store: RootState) => store.cart.item);
   //   total quantity
   const quantity = items.reduce((total, item) => total + item.quantity, 0);
   //  total amount = price * quantity
