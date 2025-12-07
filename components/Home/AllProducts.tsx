@@ -1,7 +1,5 @@
-import React from "react";
 import { fetchProducts } from "@/requests/request";
 import { Product } from "@/typing";
-import { Loader } from "lucide-react";
 import ProductCard from "./ProductCard";
 
 const AllProducts = async () => {

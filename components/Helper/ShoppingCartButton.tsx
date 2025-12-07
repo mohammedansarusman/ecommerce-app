@@ -1,12 +1,13 @@
 "use client";
 import { ShoppingBagIcon } from "lucide-react";
-import React from "react";
 import { useSelector } from "react-redux";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 import CartSideBar from "../Cart/CartSideBar";
+import type { RootState } from "@/store/appStore";
+
 
 const ShoppingCartButton = () => {
-  const noOfItems = useSelector((store) => store.cart.item);
+  const noOfItems = useSelector((store: RootState) => store.cart.item);
   return (
     <Sheet>
       <SheetTrigger>

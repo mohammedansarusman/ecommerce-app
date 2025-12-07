@@ -5,11 +5,13 @@ import { setCart } from "@/store/cartSlice";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "sonner";
+import type { RootState } from "@/store/appStore";
+
 
 
 const AddToCart = ({ product }) => {
   const dispatch = useDispatch();
-  const existingItem = useSelector((store) => store.cart.item);
+  const existingItem = useSelector((store: RootState) => store.cart.item);
 
   const handleClick = () => {
     const foundItem = existingItem.find((record) => record.id === product.id)

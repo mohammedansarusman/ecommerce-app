@@ -3,8 +3,10 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import type { RootState } from "@/store/appStore";
+
 const Summary = () => {
-  const items = useSelector((store) => store.cart.item);
+  const items = useSelector((store: RootState) => store.cart.item);
   const totalAmount = items.reduce(
     (total, item) => total + item.price * item.quantity,
     0

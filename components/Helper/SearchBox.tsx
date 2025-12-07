@@ -1,4 +1,3 @@
-import React from "react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import { SearchCheckIcon, SearchIcon } from "lucide-react";
 import { DialogTitle } from "@radix-ui/react-dialog";

@@ -1,4 +1,3 @@
-import React from "react";
 import { fetchCategory } from "@/requests/request";
 
 const Category = async () => {
