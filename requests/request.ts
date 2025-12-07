@@ -7,15 +7,38 @@ export const fetchCategory = async()=>{
     return data;
 }
 
-export const fetchProducts = async() =>{
-    const response = await fetch(PRODUCTS_URL,{cache: "no-store"})
-    const data = await response.json();
-    return data;
-}
+
+// export const fetchProducts = async() =>{
+//     const response = await fetch(PRODUCTS_URL,{cache: "no-store"})
+//     const data = await response.json();
+//     return data;
+// }
 export const singleProduct = async(id:string) =>{
 
     const response = await fetch(`${PRODUCTS_URL}/${id}`)
     const data = await response.json();
     return data;
 }
+
+export const fetchProducts = async () => {
+  try {
+    const res = await fetch(PRODUCTS_URL, {
+      cache: "no-store"
+    });
+
+    const text = await res.text();
+
+    // if response is JSON
+    if (text.trim().startsWith("{") || text.trim().startsWith("[")) {
+      return JSON.parse(text);
+    }
+
+    console.error("FakeStore returned non JSON:", text);
+    return []; // avoid crash
+  } catch (err) {
+    console.error("fetchProducts error", err);
+    return [];
+  }
+};
+
 
