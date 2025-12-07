@@ -3,7 +3,6 @@ import { fetchCategory } from "@/requests/request";
 
 const Category = async () => {
   const result: string[] = await fetchCategory();
-  console.log("result=>", result);
   return (
     <div className="pt-16 px-12">
       <h1 className="text-center capitalize font-bold text-2xl">

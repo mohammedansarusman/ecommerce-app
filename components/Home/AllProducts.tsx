@@ -6,7 +6,6 @@ import ProductCard from "./ProductCard";
 
 const AllProducts = async () => {
   const products: Product = await fetchProducts();
-  console.log("products=>", products);
   return (
     <div className="pt-16 pb-12 flex flex-col items-center">
       <div className="font-bold text-2xl text-center capitalize">All Products</div>

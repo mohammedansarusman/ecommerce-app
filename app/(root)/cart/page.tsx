@@ -1,10 +1,22 @@
 "use client";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Summary from "@/components/Cart/Summary";
 import EmptyCart from "@/components/Cart/EmptyCart";
+import { addItem, removeItem } from "@/store/cartSlice";
+
 const CartPage = () => {
+  const dispatch = useDispatch();
+  // remove item from cart
+  const handleRemove = (id: number) => {
+    dispatch(removeItem(id));
+  };
+  // plus quanity in cart
+  const handleAdd = (id: number) => {
+    dispatch(addItem(id));
+  };
+
   const items = useSelector((store) => store.cart.item);
   //   total quantity
   const quantity = items.reduce((total, item) => total + item.quantity, 0);
@@ -16,10 +28,13 @@ const CartPage = () => {
   //
   const vat = (+totalAmount * 0.05).toFixed(2);
   const totalWithVat = (+totalAmount + +vat).toFixed(2);
-  console.log("vat=>", totalWithVat);
 
   return (
-    <div className={`mt-8 min-h-[60vh] flex flex-col lg:flex lg:flex-row lg:px-10 lg:gap-10 w-full  ${items.length===0 ? "justify-center" : "justify-between"} `}>
+    <div
+      className={`mt-8 flex flex-col lg:flex lg:flex-row lg:px-10 lg:gap-10 w-full  ${
+        items.length === 0 ? "justify-center" : "justify-between"
+      } `}
+    >
       {/*  if cart is empty */}
       {items.length === 0 && <EmptyCart />}
       {items.length > 0 && (
@@ -56,8 +71,13 @@ const CartPage = () => {
                 </h1>
                 <h1>Quantity: {item.quantity}</h1>
                 <div className="flex w-full justify-start gap-4 mt-2">
-                  <Button>Add more items</Button>
-                  <Button variant={"destructive"}>Remove</Button>
+                  <Button onClick={() => handleAdd(item.id)}>Add</Button>
+                  <Button
+                    variant={"destructive"}
+                    onClick={() => handleRemove(item.id)}
+                  >
+                    Remove
+                  </Button>
                 </div>
               </div>
             </div>
@@ -65,7 +85,7 @@ const CartPage = () => {
         </div>
       )}
       {/* summary of cart */}
-      {items.length>0 && <Summary />}
+      {items.length > 0 && <Summary />}
     </div>
   );
 };
