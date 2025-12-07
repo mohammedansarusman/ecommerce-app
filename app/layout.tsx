@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Home/Nav";
-import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "@/components/Home/Footer";
 import Providers from "@/components/Helper/Providers";
 import { Toaster } from "@/components/ui/sonner"
@@ -29,7 +28,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased `}
@@ -42,6 +40,5 @@ export default function RootLayout({
           </Providers>
         </body>
       </html>
-    </ClerkProvider>
   );
 }
