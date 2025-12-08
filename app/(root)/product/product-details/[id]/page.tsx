@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import React from "react";
 import { singleProduct } from "@/requests/request";
 import { Star } from "lucide-react";

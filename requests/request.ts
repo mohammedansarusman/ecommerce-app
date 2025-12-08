@@ -13,12 +13,14 @@ export const fetchProducts = async() =>{
     const data = await response.json();
     return data;
 }
-export const singleProduct = async(id:string) =>{
+export const singleProduct = async (id: string) => {
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
+    cache: "no-store",
+  });
 
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`)
-    const data = await response.json();
-    return data;
-}
+  const data = await response.json();
+  return data;
+};
 
 
 
