@@ -15,7 +15,7 @@ export const fetchProducts = async() =>{
 }
 export const singleProduct = async(id:string) =>{
 
-    const response = await fetch(`${PRODUCTS_URL}/${id}`)
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`)
     const data = await response.json();
     return data;
 }

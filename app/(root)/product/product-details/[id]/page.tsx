@@ -6,7 +6,7 @@ import AddToCart from "@/components/Cart/AddToCart";
 const ProductId = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
   const product = await singleProduct(id);
-  const { title, price, description, image, rating, category } = product;
+  const { title, description, image, rating, category } = product;
   const num = Math.round(rating.rate);
   const ratingArray = new Array(num).fill(0);
 
